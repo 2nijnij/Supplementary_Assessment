@@ -78,7 +78,17 @@ public class SocialGraph {
 	 * @param a
 	 * @param b
 	 */
-	public void removeEdge(Person a, Person b) {
+	public void removeEdge(Person a, Person b) throws EdgeDoesNotExist {
+		if (a == null || b == null || !vertices.contains(a) || !vertices.contains(b)) {
+			throw new EdgeDoesNotExist ("One or both persons are not in the graph.");
+		}
+		
+		if (!a.getContacts().contains(b) || !b.getContacts().contains(a)) {
+			throw new EdgeDoesNotExist("No edge exists between the specified person.");
+		}
+		
+		a.removeContact(b);
+		b.removeContact(a);
 		
 	}
 	
