@@ -2,11 +2,17 @@ package ds.graph.tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import ds.graph.EdgeDoesNotExist;
 import ds.graph.Person;
 import ds.graph.SocialGraph;
+import ds.graph.PersonAlreadyExists;
+import ds.graph.PersonDoesNotExist;
+
 
 class SocialGraphTest {
 
