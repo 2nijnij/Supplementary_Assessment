@@ -23,4 +23,9 @@ public class PersonTest {
         person.setName("Jisoo");
         assertEquals("Jisoo", person.getName(), "Name should be updated to Jisoo.");
     }
+    
+    @Test
+    void testGetAge() {
+        assertEquals(25, person.getAge(), "Age should be 25.");
+    }
 }
