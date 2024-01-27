@@ -99,6 +99,7 @@ class SocialGraphTest {
 		sg.addEdge(c10, c8);
 		
 		sg.addEdge(c8, c1);
+		
 	}
 	
 	@Test
@@ -180,6 +181,27 @@ class SocialGraphTest {
 	}
 	
 	@Test
+	void testSearchWeightedBFS() throws PersonDoesNotExist {
+	    // Choose start and target persons for BFS
+	    Person start = sg.getVertex("Alice");
+	    Person target = sg.getVertex("Bertha");
+
+	    // Ensure that the start and target persons exist in the graph
+	    assertNotNull(start, "Start person should exist in the graph.");
+	    assertNotNull(target, "Target person should exist in the graph.");
+
+	    // Perform weighted BFS search
+	    ArrayList<Person> path = sg.searchWeightedBFS(start, target);
+
+	    // Verify that the path is not null and contains the target person
+	    assertNotNull(path, "Path should not be null.");
+	    assertTrue(path.contains(target), "Path should contain the target person.");
+
+	    // Print the path for inspection (optional)
+	    System.out.println("Weighted BFS Path: " + path);
+	}
+	
+	@Test
 	void testSearchDFS() throws PersonDoesNotExist {
 		// Choose Alice as a  start and Aaron as a target person for BFS
 		Person start = sg.getVertex("Alice");
@@ -189,6 +211,27 @@ class SocialGraphTest {
         assertNotNull(path, "Path should not be null.");
         assertTrue(path.contains(target), "Path should contain the target person.");
     }
+	
+	@Test
+	void testSearchWeightedDFS() throws PersonDoesNotExist {
+	    // Choose start and target persons for DFS
+	    Person start = sg.getVertex("Alice");
+	    Person target = sg.getVertex("Bertha");
+
+	    // Ensure that the start and target persons exist in the graph
+	    assertNotNull(start, "Start person should exist in the graph.");
+	    assertNotNull(target, "Target person should exist in the graph.");
+
+	    // Perform weighted DFS search
+	    ArrayList<Person> path = sg.searchWeightedDFS(start, target);
+
+	    // Verify that the path is not null and contains the target person
+	    assertNotNull(path, "Path should not be null.");
+	    assertTrue(path.contains(target), "Path should contain the target person.");
+
+	    // Print the path for inspection (optional)
+	    System.out.println("Weighted DFS Path: " + path);
+	}
 	
 	@Test
 	void testCountContacts() throws PersonDoesNotExist {
