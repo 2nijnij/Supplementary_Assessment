@@ -31,7 +31,7 @@ public class SocialGraph {
 	 * @throws PersonDoesNotExist If the given person is not found inside the graph. 
 	 * @param p The person to remove
 	 */
-	public void removeVertex(Person p) {
+	public void removeVertex(Person p) throws PersonDoesNotExist {
 		if (!vertices.contains(p)) {
 			throw new PersonDoesNotExist("The person does not exist in the graph.");
 		}
