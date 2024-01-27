@@ -1,6 +1,7 @@
 package ds.graph;
 
 import java.util.ArrayList;
+import java.util.*;
 
 public class SocialGraph {
 	private ArrayList<Person> vertices;
@@ -114,12 +115,37 @@ public class SocialGraph {
 	 * determine the order that the BFS operates. 
 	 * 
 	 * @throws PersonDoesNotExist if either start or target are not in the graph. 
-	 * @param start
-	 * @param target
+	 * @param start The starting person
+	 * @param target The target person
 	 * @return A list of nodes that must be traversed to get to target, from start. 
 	 */
-	public ArrayList<Person> searchBFS(Person start, Person target) {
-		return null;
+	public ArrayList<Person> searchBFS(Person start, Person target) throws PersonDoesNotExist {
+        if (!vertices.contains(start) || !vertices.contains(target)) {
+            throw new PersonDoesNotExist("Either start or target person does not exist in the graph.");
+        }
+
+        Queue<Person> queue = new LinkedList<>();
+        Map<Person, Person> predecessors = new HashMap<>();
+        queue.add(start);
+        predecessors.put(start, null);
+
+        while (!queue.isEmpty()) {
+            Person current = queue.poll();
+
+            if (current.equals(target)) {
+                return reconstructPath(predecessors, target);
+            }
+
+            for (Person contact : current.getContacts()) {
+                if (!predecessors.containsKey(contact)) {
+                    queue.add(contact);
+                    predecessors.put(contact, current);
+                }
+            }
+        }
+        
+        // Return an empty path, if target is not found
+        return new ArrayList<>();
 	}
 	
 	/**
