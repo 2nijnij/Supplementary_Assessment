@@ -36,13 +36,13 @@ public class PersonTest {
     }
     
     @Test
-    void testGetSocialHygiene() {
+    void testGetSocialHygine() {
         assertEquals(0.5f, person.getSocialHygine(), 0.01, "Social hygiene should be 0.5.");
     }
     
     @Test
     // test if the getters and setters for name, age, and socialHygiene work correctly
-    void testSetSocialHygiene() {
+    void testSetSocialHygine() {
         person.setSocialHygine(0.9f);
         assertEquals(0.9f, person.getSocialHygine(), 0.01, "Social hygiene should be updated to 0.9.");
     }
