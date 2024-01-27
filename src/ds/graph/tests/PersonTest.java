@@ -91,6 +91,16 @@ public class PersonTest {
         // Test that hashCode method generates the same hash for equal objects
         assertEquals(person1.hashCode(), person2.hashCode());
     }
-
     
+    @Test
+    void testToString() {
+        // Create a person
+        Person person = new Person("Alice", 25, 0.75f);
+
+        person.addContact(new Person("JinJin", 30, 0.8f)); // Adding a contact for demonstration
+
+        // Test the toString method
+        assertEquals("Person: Alice, 25. Contacts: 1", person.toString());
+    }
 }
+    
