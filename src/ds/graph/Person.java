@@ -77,5 +77,15 @@ public class Person {
 		return Objects.equals(name,  person.name);
 	}
 	
+	// Overridden hashCode method
+	@Override
+	public int hashCode() {
+		return Objects.hash(name);
+	}
 	
+	// Overridden toString method
+	@Override
+	public String toString() {
+		return "Person: " + name + ", " + age + ". Contacts: " + contacts.size();
+	}
 }
