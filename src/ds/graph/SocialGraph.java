@@ -29,9 +29,19 @@ public class SocialGraph {
 	 * Remove the given Person from the graph. Any edges to this person should also be removed. 
 	 * 
 	 * @throws PersonDoesNotExist If the given person is not found inside the graph. 
-	 * @param p
+	 * @param p The person to remove
 	 */
 	public void removeVertex(Person p) {
+		if (!vertices.contains(p)) {
+			throw new PersonDoesNotExist("The person does not exist in the graph.");
+		}
+		
+		vertices.remove(p);
+		
+		// Remove this person from the contacts of all other people in the graph
+		for (Person person : vertices) {
+			person.removeContact(p);
+		}
 		
 	}
 	
