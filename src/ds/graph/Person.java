@@ -9,8 +9,24 @@ public class Person {
 	private String name;
 	private ArrayList<Person> contacts;
 	
+	
 	public Person(String name, int age, float socialHygine) {
 		
 	}
+	
+	// Accessor and Mutator Methods
+	
+	public float getSocialHygine() {
+		return socialHygine;
+	}
+	
+	public void setSocialHygine(float socialHygine) {
+		this.socialHygine = socialHygine;
+	}
+	
+	public int getAge() {
+		return age;
+	}
+	
 	
 }
