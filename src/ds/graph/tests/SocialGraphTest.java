@@ -184,7 +184,7 @@ class SocialGraphTest {
 	void testSearchWeightedBFS() throws PersonDoesNotExist {
 	    // Choose start and target persons for BFS
 	    Person start = sg.getVertex("Alice");
-	    Person target = sg.getVertex("Bertha");
+	    Person target = sg.getVertex("Bethany");
 
 	    // Ensure that the start and target persons exist in the graph
 	    assertNotNull(start, "Start person should exist in the graph.");
