@@ -148,6 +148,16 @@ public class SocialGraph {
         return new ArrayList<>();
 	}
 	
+	// Create method to reconstruct the path from start to target
+	private ArrayList<Person> reconstructPath(Map<Person, Person> predecessors, Person target) {
+		ArrayList<Person> path = new ArrayList<>();
+		for (Person at = target; at != null; at = predecessors.get(at)) {
+			path.add(at);
+		}
+		Collections.reverse(path);
+		return path;
+	}
+	
 	/**
 	 * Implement a breadth-first search, from Person start to target.
 	 * The weights associated with each edge should determine the order that the BFS operates. 
