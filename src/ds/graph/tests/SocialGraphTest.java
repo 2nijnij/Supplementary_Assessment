@@ -118,5 +118,17 @@ class SocialGraphTest {
 		}, "Adding a duplicate person should throw PersonAlreadyExists exception.");
 	}
 	
+	@Test
+	void testAddEdge() throws PersonDoesNotExist, PersonAlreadyExists {
+        // set Person who are not added in setUp
+		Person a = new Person("UniquePersonA", 30, 0.5f);
+        Person b = new Person("UniquePersonB", 35, 0.6f);
+		sg.addVertex(a);
+		sg.addVertex(b);
+		sg.addEdge(a, b);
+		
+		assertTrue(a.getContacts().contains(b) && b.getContacts().contains(a), "Edge should be added between UniquePersonA and UniquePersonB.");
+		
+	}
 
 }
