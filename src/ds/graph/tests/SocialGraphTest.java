@@ -100,5 +100,12 @@ class SocialGraphTest {
 		
 		sg.addEdge(c8, c1);
 	}
+	
+	@Test
+	void testAddVertex() throws PersonAlreadyExists {
+		Person newPerson = new Person("NewPerson", 25, 0.5f);
+		sg.addVertex(newPerson);
+		assertNotNull(sg.getVertex("NewPerson"), "New person should be added in the graph.");
+	}
 
 }
