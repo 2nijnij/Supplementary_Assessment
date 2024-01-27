@@ -54,4 +54,15 @@ public class PersonTest {
         person.addContact(newContact);
         assertTrue(person.getContacts().contains(newContact), "Joohoney should be added as a contact.");
     }
+    
+    @Test
+ // verify that contacts can be correctly removed from a contact list
+    void testRemoveContact() {
+        Person contact = new Person("Joohoney", 30, 0.7f);
+        person.addContact(contact);
+        person.removeContact(contact);
+        assertFalse(person.getContacts().contains(contact), "Joohoney should be removed from contacts.");
+    }
+    
+    
 }
