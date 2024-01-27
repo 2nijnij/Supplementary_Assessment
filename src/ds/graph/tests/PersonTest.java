@@ -46,4 +46,12 @@ public class PersonTest {
         person.setSocialHygine(0.9f);
         assertEquals(0.9f, person.getSocialHygine(), 0.01, "Social hygiene should be updated to 0.9.");
     }
+    
+    @Test
+    // verify that contacts can be correctly added from a contact list
+    void testAddContact() {
+        Person newContact = new Person("Joohoney", 30, 0.7f);
+        person.addContact(newContact);
+        assertTrue(person.getContacts().contains(newContact), "Joohoney should be added as a contact.");
+    }
 }
