@@ -222,6 +222,17 @@ public class SocialGraph {
 		return reconstructPath(predecessors, target);
 	}
 	
+    private void dfsHelper(Person current, Person target, Set<Person> visited, Map<Person, Person> predecessors) {
+        visited.add(current);
+
+        for (Person contact : current.getContacts()) {
+            if (!visited.contains(contact)) {
+                predecessors.put(contact, current);
+                dfsHelper(contact, target, visited, predecessors);
+            }
+        }
+    }
+	
 	/**
 	 * Implement a depth-first search, from Person start to target.  
 	 * The weights associated with each edge should determine the order that the DFS operates. 
