@@ -130,5 +130,18 @@ class SocialGraphTest {
 		assertTrue(a.getContacts().contains(b) && b.getContacts().contains(a), "Edge should be added between UniquePersonA and UniquePersonB.");
 		
 	}
-
+	
+	@Test
+	void testRemoveEdge() throws PersonDoesNotExist, EdgeDoesNotExist, PersonAlreadyExists {
+		// set Person who are not added in setUp
+		Person a = new Person("UniquePersonA", 30, 0.5f);
+        Person b = new Person("UniquePersonB", 35, 0.6f);
+		sg.addVertex(a);
+		sg.addVertex(b);
+		sg.addEdge(a, b);
+		sg.removeEdge(a, b);
+		
+		assertFalse(a.getContacts().contains(b) && b.getContacts().contains(a), "Edge between UniquePersonA and UniquePersonB should be removed.");
+	
+	}
 }
