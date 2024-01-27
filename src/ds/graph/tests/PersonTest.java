@@ -6,5 +6,10 @@ import org.junit.jupiter.api.Test;
 import ds.graph.Person;
 
 public class PersonTest {
-
+	private Person person;
+	
+	@BeforeEach
+	void setUp() {
+		person = new Person("Yvette", 24, 0.5f);
+	}
 }
