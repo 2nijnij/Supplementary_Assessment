@@ -20,7 +20,7 @@ class SocialGraphTest {
 	
 	@BeforeEach
 	void setUp() throws Exception {
-	
+		
 		// Create Persons to insert into the social graph. 
 		Person a1 = new Person("Alice", 20, .2f);
 		Person a2 = new Person("Abigail", 30, .43f);
@@ -165,5 +165,19 @@ class SocialGraphTest {
 		ArrayList<Person> path = sg.searchDFS(start, target);
         assertNotNull(path, "Path should not be null.");
         assertTrue(path.contains(target), "Path should contain the target person.");
-    }	
+    }
+	
+	@Test
+	void testCountContacts() throws PersonDoesNotExist {
+	    try {
+	        int countAlice = sg.countContacts(sg.getVertex("Alice"));
+	        System.out.println("Count for Alice: " + countAlice);  // Add this line
+	        assertEquals(4, countAlice, "Count of contacts-of-contacts for Alice should match the expected value.");
+
+	        // Add similar print statements for other persons
+
+	    } catch (PersonDoesNotExist e) {
+	        fail("PersonDoesNotExist exception thrown unexpectedly.");
+	    }
+	}
 }
