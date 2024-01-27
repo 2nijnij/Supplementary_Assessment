@@ -15,12 +15,12 @@ public class PersonTest {
 	
 	@Test
 	void testGetName() {
-	    assertEquals("Ashley", person.getName(), "Name should be Alice.");
+	    assertEquals("Yvette", person.getName(), "Name should be Yvette.");
 	}
 	
     @Test
     void testSetName() {
-        person.setName("Bob");
-        assertEquals("Bob", person.getName(), "Name should be updated to Bob.");
+        person.setName("Jisoo");
+        assertEquals("Jisoo", person.getName(), "Name should be updated to Jisoo.");
     }
 }
