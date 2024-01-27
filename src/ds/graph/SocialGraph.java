@@ -259,6 +259,20 @@ public class SocialGraph {
         return reconstructPath(predecessors, target);
     }
 	
+    private void weightedDfsHelper(Person current, Person target, Set<Person> visited, Map<Person, Person> predecessors) {
+        visited.add(current);
+
+        List<Person> sortedContacts = new ArrayList<>(current.getContacts());
+        sortedContacts.sort(Comparator.comparing(Person::getInfectiveness).reversed());
+
+        for (Person contact : sortedContacts) {
+            if (!visited.contains(contact)) {
+                predecessors.put(contact, current);
+                weightedDfsHelper(contact, target, visited, predecessors);
+            }
+        }
+    }
+	
 	/**
 	 * This method should return an int value showing the total number of contacts-of-contacts of the start person. 
 	 * This is the equivalent to doing a BFS around the start person, and 
