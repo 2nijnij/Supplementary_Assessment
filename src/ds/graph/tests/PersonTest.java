@@ -71,6 +71,17 @@ public class PersonTest {
         assertEquals(expectedInfectiveness, person.getInfectiveness(), 0.12, 
                      "Infectiveness should be calculated correctly.");
     }
+    
+    @Test
+    void testEquals() {
+        // Create persons with identical attributes
+        Person person1 = new Person("Alice", 25, 0.75f);
+        Person person2 = new Person("Alice", 25, 0.75f);
+
+        // Test that equals method considers them equal
+        assertEquals(person1, person2);
+    }
+
 
     
 }
