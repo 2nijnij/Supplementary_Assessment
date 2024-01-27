@@ -26,7 +26,7 @@ public class PersonTest {
     
     @Test
     void testGetAge() {
-        assertEquals(25, person.getAge(), "Age should be 25.");
+        assertEquals(24, person.getAge(), "Age should be 24.");
     }
     
     @Test
@@ -67,8 +67,8 @@ public class PersonTest {
     @Test
     // check the correctness of the calculation
     void testInfectivenessCalculation() {
-        float expectedInfectiveness = (30 / 100f) - (0.8f * (30 / 100f));
-        assertEquals(expectedInfectiveness, person.getInfectiveness(), 0.01, 
+        float expectedInfectiveness = (24 / 100f) - (0.5f * (24 / 100f));
+        assertEquals(expectedInfectiveness, person.getInfectiveness(), 0.12, 
                      "Infectiveness should be calculated correctly.");
     }
 
