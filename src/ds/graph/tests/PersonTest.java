@@ -12,4 +12,9 @@ public class PersonTest {
 	void setUp() {
 		person = new Person("Yvette", 24, 0.5f);
 	}
+	
+	@Test
+	void testGetName() {
+	    assertEquals("Ashley", person.getName(), "Name should be Alice.");
+	}
 }
