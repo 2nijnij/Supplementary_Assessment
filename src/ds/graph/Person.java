@@ -59,4 +59,14 @@ public class Person {
 		contacts.remove(person);
 	}
 	
+	/**
+	 * Calculate the infectiveness of the person
+	 * Will return the calculated infectiveness value
+	 * 
+	 */
+	public float getInfectiveness() {
+		return (age / 100f) - (socialHygine * (age / 100f));
+	}
+	
+	
 }
