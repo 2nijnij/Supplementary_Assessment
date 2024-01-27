@@ -92,6 +92,22 @@ public class SocialGraph {
 		
 	}
 	
+    /**
+     * Retrieves a vertex (Person) from the graph based on the name.
+     * 
+     * @param name The name of the person to retrieve.
+     * @return The Person with the given name, or null if not found.
+     */
+	public Person getVertex(String name) {
+		for (Person p : vertices) {
+			if(p.getName().equals(name)) {
+				return p;
+			}
+		}
+		// Person not found
+		return null;
+	}
+	
 	/**
 	 * Implement a breadth-first search, from Person start to target. 
 	 * This method should consider the graph unweighted: the order that the Persons are stored inside the contacts list will
