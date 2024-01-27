@@ -144,4 +144,15 @@ class SocialGraphTest {
 		assertFalse(a.getContacts().contains(b) && b.getContacts().contains(a), "Edge between UniquePersonA and UniquePersonB should be removed.");
 	
 	}
+	
+	@Test
+	void testSearchBFS() throws PersonDoesNotExist {
+		// Choose Alice as a  start and Aaron as a target person for BFS
+		Person start = sg.getVertex("Alice");
+		Person target = sg.getVertex("Aaron");	
+		
+		ArrayList<Person> path = sg.searchBFS(start, target);
+        assertNotNull(path, "Path should not be null.");
+        assertTrue(path.contains(target), "Path should contain the target person.");
+	}
 }
