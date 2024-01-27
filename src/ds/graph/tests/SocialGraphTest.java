@@ -155,4 +155,15 @@ class SocialGraphTest {
         assertNotNull(path, "Path should not be null.");
         assertTrue(path.contains(target), "Path should contain the target person.");
 	}
+	
+	@Test
+	void testSearchDFS() throws PersonDoesNotExist {
+		// Choose Alice as a  start and Aaron as a target person for BFS
+		Person start = sg.getVertex("Alice");
+		Person target = sg.getVertex("Aaron");	
+		
+		ArrayList<Person> path = sg.searchDFS(start, target);
+        assertNotNull(path, "Path should not be null.");
+        assertTrue(path.contains(target), "Path should contain the target person.");
+    }	
 }
