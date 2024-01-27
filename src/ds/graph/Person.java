@@ -44,7 +44,12 @@ public class Person {
 		return contacts;
 	}
 	
-	
+	// Method to add a contact
+	public void addContact(Person person) {
+		if (person != null && !contacts.contains(person)) {
+			contacts.add(person);
+		}
+	}
 	
 	
 }
