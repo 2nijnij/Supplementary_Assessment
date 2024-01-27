@@ -40,6 +40,10 @@ public class Person {
 		this.name = name;
 	}
 	
+	public ArrayList<Person> getContacts() {
+		return contacts;
+	}
+	
 	
 	
 	
