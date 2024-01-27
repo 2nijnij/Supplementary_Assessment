@@ -75,8 +75,8 @@ public class SocialGraph {
 	 * If no edge existed between these people, this method should throw an EdgeDoesNotExist exception. 
 	 * 
 	 * @throws EdgeDoesNotExist
-	 * @param a
-	 * @param b
+	 * @param a The first person
+	 * @param b The second person
 	 */
 	public void removeEdge(Person a, Person b) throws EdgeDoesNotExist {
 		if (a == null || b == null || !vertices.contains(a) || !vertices.contains(b)) {
