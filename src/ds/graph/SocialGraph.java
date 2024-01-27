@@ -3,20 +3,25 @@ package ds.graph;
 import java.util.ArrayList;
 
 public class SocialGraph {
+	private ArrayList<Person> vertices;
 	
+	//Constructor to initialize the SocialGraph
 	public SocialGraph() {
-		
+		vertices = new ArrayList<>();
 	}
 	
 	/**
 	 * Add the given person to the graph. The person needs to be added to the list of vertices.
 	 * 
-	 * @param p
+	 * @param p The person to add
 	 * @throws PersonAlreadyExists If the person is already present in the graph, 
 	 *  		this method should throw a PersonAlreadyPresent exception. 
 	 */
-	public void addVertex(Person p) {
-		
+	public void addVertex(Person p) throws PersonAlreadyExists {
+		if (vertices.contains(p)) {
+			throw new PersonAlreadyExists ("Person already exists in the graph.");
+		}
+		vertices.add(p);
 	}
 	
 	
