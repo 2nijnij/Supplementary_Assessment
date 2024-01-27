@@ -64,5 +64,13 @@ public class PersonTest {
         assertFalse(person.getContacts().contains(contact), "Joohoney should be removed from contacts.");
     }
     
+    @Test
+    // check the correctness of the calculation
+    void testInfectivenessCalculation() {
+        float expectedInfectiveness = (30 / 100f) - (0.8f * (30 / 100f));
+        assertEquals(expectedInfectiveness, person.getInfectiveness(), 0.01, 
+                     "Infectiveness should be calculated correctly.");
+    }
+
     
 }
