@@ -282,39 +282,42 @@ public class SocialGraph {
 	 * @param start The starting person
 	 * @return The total number of contacts-of-contacts
 	 */
-	public int countContacts(Person start) throws PersonDoesNotExist{
-	     if (start == null || !vertices.contains(start)) {
-	            throw new PersonDoesNotExist("Start person does not exist in the graph.");
-	        }
+    public int countContacts(Person start) throws PersonDoesNotExist {
+        if (start == null || !vertices.contains(start)) {
+            throw new PersonDoesNotExist("Start person does not exist in the graph.");
+        }
 
-	        Set<Person> visited = new HashSet<>();
-	        Queue<Person> queue = new LinkedList<>();
-	        queue.add(start);
-	        visited.add(start);
+        Set<Person> visited = new HashSet<>();
+        Queue<Person> queue = new LinkedList<>();
+        queue.add(start);
+        visited.add(start);
 
-	        int level = 0;
-	        int count = 0;
+        int level = 0;
+        int count = 0;
 
-	        while (!queue.isEmpty()) {
-	            if (level == 2) {  // Only count vertices at the second level
-	                count += queue.size();
-	                break;
-	            }
+        while (!queue.isEmpty()) {
+            int levelSize = queue.size();
+            for (int i = 0; i < levelSize; i++) {
+                Person current = queue.poll();
 
-	            int levelSize = queue.size();
-	            for (int i = 0; i < levelSize; i++) {
-	                Person current = queue.poll();
+                if (level == 1) {
+                    count++;  // Increment count only for contacts at the second level
+                }
 
-	                for (Person contact : current.getContacts()) {
-	                    if (!visited.contains(contact)) {
-	                        queue.add(contact);
-	                        visited.add(contact);
-	                    }
-	                }
-	            }
-	            level++;
-	        }
+                for (Person contact : current.getContacts()) {
+                    if (!visited.contains(contact)) {
+                        queue.add(contact);
+                        visited.add(contact);
+                    }
+                }
+            }
+            level++;
 
-	        return count;
-	}
+            if (level > 1) {
+                break;  // Break after processing the second level and onwards
+            }
+        }
+
+        return count;
+    }
 }
