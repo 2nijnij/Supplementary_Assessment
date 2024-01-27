@@ -118,6 +118,29 @@ class SocialGraphTest {
 		}, "Adding a duplicate person should throw PersonAlreadyExists exception.");
 	}
 	
+    @Test
+    void testRemoveVertex() throws PersonDoesNotExist, EdgeDoesNotExist, PersonAlreadyExists {
+        // Choose a person to remove from the graph
+        Person personToRemove = sg.getVertex("Abigail");
+
+        // Ensure that the person to be removed exists in the graph
+        assertNotNull(personToRemove, "Abigail should exist in the graph.");
+
+        // Store the contacts of the person before removal
+        ArrayList<Person> contactsBeforeRemoval = new ArrayList<>(personToRemove.getContacts());
+
+        // Remove the person from the graph
+        sg.removeVertex(personToRemove);
+
+        // Verify that the person is removed from the graph
+        assertNull(sg.getVertex("Abigail"), "Abigail should be removed from the graph.");
+
+        // Verify that edges involving the removed person are also removed
+        for (Person contact : contactsBeforeRemoval) {
+            assertFalse(contact.getContacts().contains(personToRemove), "Edge involving removed person should be removed.");
+        }
+    }
+	
 	@Test
 	void testAddEdge() throws PersonDoesNotExist, PersonAlreadyExists {
         // set Person who are not added in setUp
