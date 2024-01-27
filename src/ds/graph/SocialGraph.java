@@ -51,13 +51,23 @@ public class SocialGraph {
 	 * 
 	 * If the edge already exists, this method should return true. 
 	 *
-	 * @param a
-	 * @param b
-	 * 
+	 * @param a The first person
+	 * @param b The second person
+	 * @return True if the edge already exists, otherwise False
 	 * @throws PersonDoesNotExist	If the person is not found within the graph. 
 	 */
-	public void addEdge(Person a, Person b) {
+	public boolean addEdge(Person a, Person b) throws PersonDoesNotExist {
+		if (!vertices.contains(a) || !vertices.contains(b)) {
+			throw new PersonDoesNotExist("One or both person are not in the graph.");
+		}
 		
+		boolean alreadyExists = a.getContacts().contains(b) && b.getContacts().contains(a);
+		
+		if (!alreadyExists) {
+			a.addContact(b);
+			b.addContact(a);
+		}
+		return alreadyExists;
 	}
 	
 	/**
