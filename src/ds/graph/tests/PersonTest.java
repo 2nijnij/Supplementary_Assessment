@@ -81,7 +81,16 @@ public class PersonTest {
         // Test that equals method considers them equal
         assertEquals(person1, person2);
     }
+    
+    @Test
+    void testHashCode() {
+        // Create persons with identical attributes
+        Person person1 = new Person("Alice", 25, 0.75f);
+        Person person2 = new Person("Alice", 25, 0.75f);
 
+        // Test that hashCode method generates the same hash for equal objects
+        assertEquals(person1.hashCode(), person2.hashCode());
+    }
 
     
 }
