@@ -279,10 +279,42 @@ public class SocialGraph {
 	 * counting the vertices 2 steps away from the start node.  
 	 * 
 	 * @throws PersonDoesNotExist if either start or target are not in the graph. 	
-	 * @param start
-	 * @return
+	 * @param start The starting person
+	 * @return The total number of contacts-of-contacts
 	 */
-	public int countContacts(Person start) {
-		return 0;
+	public int countContacts(Person start) throws PersonDoesNotExist{
+	     if (start == null || !vertices.contains(start)) {
+	            throw new PersonDoesNotExist("Start person does not exist in the graph.");
+	        }
+
+	        Set<Person> visited = new HashSet<>();
+	        Queue<Person> queue = new LinkedList<>();
+	        queue.add(start);
+	        visited.add(start);
+
+	        int level = 0;
+	        int count = 0;
+
+	        while (!queue.isEmpty()) {
+	            if (level == 2) {  // Only count vertices at the second level
+	                count += queue.size();
+	                break;
+	            }
+
+	            int levelSize = queue.size();
+	            for (int i = 0; i < levelSize; i++) {
+	                Person current = queue.poll();
+
+	                for (Person contact : current.getContacts()) {
+	                    if (!visited.contains(contact)) {
+	                        queue.add(contact);
+	                        visited.add(contact);
+	                    }
+	                }
+	            }
+	            level++;
+	        }
+
+	        return count;
 	}
 }
