@@ -9,10 +9,13 @@ public class Person {
 	private String name;
 	private ArrayList<Person> contacts;
 	
-	
+// Constructor to initialize a Person object
 	public Person(String name, int age, float socialHygine) {
-		
-	}
+		this.name = name;
+		this.age = age;
+		this.socialHygine = socialHygine;
+		this.contacts = new ArrayList<>()
+;	}
 	
 	// Accessor and Mutator Methods
 	
