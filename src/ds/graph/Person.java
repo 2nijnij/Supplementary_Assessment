@@ -54,5 +54,9 @@ public class Person {
 		}
 	}
 	
+	// Method to remove a contact
+	public void removeContact(Person person) {
+		contacts.remove(person);
+	}
 	
 }
